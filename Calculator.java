@@ -1,57 +1,53 @@
-// Importing Scanner class to take user input
-import java.util.Scanner;
+import java.util.Scanner; // Import Scanner class for user input
 
-// Main class of the program
 public class Calculator {
     public static void main(String[] args) {
-        // Creating a Scanner object to take input from the user
+        // Create a Scanner object to take user input
         Scanner scanner = new Scanner(System.in);
 
-        // Displaying a welcome message
-        System.out.println("Simple Calculator in Java");
-
-        // Asking the user to enter the first number
+        // Prompt user for first number
         System.out.print("Enter first number: ");
-        double num1 = scanner.nextDouble();  // Reads a decimal number (double)
+        double num1 = scanner.nextDouble(); // Read first number
 
-        // Asking the user to enter an operator (+, -, *, /)
-        System.out.print("Enter an operator (+, -, *, /): ");
-        char operator = scanner.next().charAt(0);  // Reads a single character input
+        // Prompt user for operator (+, -, *, /)
+        System.out.print("Enter operator (+, -, *, /): ");
+        char operator = scanner.next().charAt(0); // Read operator
 
-        // Asking the user to enter the second number
+        // Prompt user for second number
         System.out.print("Enter second number: ");
-        double num2 = scanner.nextDouble();  // Reads another decimal number
+        double num2 = scanner.nextDouble(); // Read second number
 
-        double result;  // Variable to store the result of the calculation
+        double result = 0; // Initialize result variable to avoid compilation errors
 
-        // Using a switch-case to perform the operation based on the user's input
+        // Perform the calculation based on the chosen operator
         switch (operator) {
-            case '+':  // If the user enters '+', perform addition
+            case '+':
                 result = num1 + num2;
                 break;
-            case '-':  // If the user enters '-', perform subtraction
+            case '-':
                 result = num1 - num2;
                 break;
-            case '*':  // If the user enters '*', perform multiplication
+            case '*':
                 result = num1 * num2;
                 break;
-            case '/':  // If the user enters '/', perform division
-                if (num2 != 0) {  // Checking to avoid division by zero
+            case '/':
+                // Handle division by zero case
+                if (num2 != 0) {
                     result = num1 / num2;
                 } else {
                     System.out.println("Error! Division by zero is not allowed.");
-                    return;  // Exiting the program if division by zero is attempted
+                    return; // Exit the program if division by zero occurs
                 }
                 break;
-            default:  // If the user enters an invalid operator
-                System.out.println("Invalid operator!");
-                return;  // Exiting the program
+            default:
+                System.out.println("Invalid operator! Please enter +, -, * or /.");
+                return; // Exit the program if invalid operator is entered
         }
 
-        // Displaying the result of the calculation
-        System.out.println("The result is: " + result);
+        // Display the final result
+        System.out.println("Result: " + result);
 
-        // Closing the scanner to avoid memory leaks
+        // Close the scanner to prevent memory leaks
         scanner.close();
     }
 }
